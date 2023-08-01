@@ -1,86 +1,42 @@
-let a = 3;
-let b = 0;
+class Accumulator {
+  constructor(initialValue) {
+    this.value = initialValue;
+  }
 
-function isNumeric(value) {
-  return typeof value === 'number' && !isNaN(value);
-}
+  increment() {
+    this.value++;
+  }
 
-function addNumbers(a, b) {
-  if (isNumeric(a) && isNumeric(b)) {
-    return a + b;
-  } else {
-    throw new Error ('Обидва аргументи повинні бути числами.');
+  decrement() {
+    this.value--;
   }
 }
 
-function subtractNumbers(a, b) {
-  if (isNumeric(a) && isNumeric(b)) {
-    return a - b;
-  } else {
-    throw new Error ('Обидва аргументи повинні бути числами.');
-  }
-}
-
-function multiplyNumbers(a, b) {
-  if (isNumeric(a) && isNumeric(b)) {
-    return a * b;
-  } else {
-    throw new Error ('Обидва аргументи повинні бути числами.');
-  }
-}
-
-function divideNumbers(a, b) {
-  if (isNumeric(a) && isNumeric(b)) {
-    if (b !== 0) {
-      return a / b;
-    } else {
-      return('Ділення на нуль неможливе.');
+class CancelableAccumulator extends Accumulator {
+    constructor(initialValue) {
+      super(initialValue);
+      this.initialValue = initialValue;
     }
-  } else {
-    throw new Error ('Обидва аргументи повинні бути числами.');
-  }
-}
-console.log(addNumbers(a, b));     
-console.log(subtractNumbers(a, b));
-console.log(multiplyNumbers(a, b));
-console.log(divideNumbers(a, b)); 
-
-const numbers = [3, 8, 248, -10, -5, 209, 4];
-
-function findMin(arr) {
-  if (arr.length === 0) {
-    return undefined;
-  }
-
-  let min = arr[0];
-
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] < min) {
-      min = arr[i];
+  
+    clear() {
+      this.value = this.initialValue;
     }
   }
 
-  return min;
-}
+const accumulator = new Accumulator(5);
+console.log(accumulator.value);
 
-function findMax(arr) {
-  if (arr.length === 0) {
-    return undefined;
-  }
+accumulator.increment();
+console.log(accumulator.value);
 
-  let max = arr[0];
+accumulator.decrement();
+console.log(accumulator.value);
 
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] > max) {
-      max = arr[i];
-    }
-  }
+const cancelableAccumulator = new CancelableAccumulator(10);
+console.log(cancelableAccumulator.value);
 
-  return max;
-}
+cancelableAccumulator.increment();
+console.log(cancelableAccumulator.value);
 
-const minValue = findMin(numbers);
-const maxValue = findMax(numbers);
-
-console.log("Мінімальне число: " + minValue);
-console.log("Максимальне число: " + maxValue);
+cancelableAccumulator.clear();
+console.log(cancelableAccumulator.value);
