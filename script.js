@@ -1,5 +1,5 @@
-let a = 3;
-let b = 0;
+let a = -5;
+let b = 6;
 
 function isNumeric(value) {
   return typeof value === 'number' && !isNaN(value);
@@ -40,10 +40,34 @@ function divideNumbers(a, b) {
     throw new Error ('Обидва аргументи повинні бути числами.');
   }
 }
-console.log(addNumbers(a, b));     
-console.log(subtractNumbers(a, b));
-console.log(multiplyNumbers(a, b));
-console.log(divideNumbers(a, b)); 
+
+function getColor(value) {
+  if (value > 0) {
+    const brightness = Math.floor(value / (Math.abs(value) + 1) * 255);
+    return `rgb(0, ${brightness}, 0)`;
+  } else if (value < 0) {
+    const brightness = Math.floor(Math.abs(value) / (Math.abs(value) + 1) * 255);
+    return `rgb(${brightness}, 0, 0)`;
+  } else {
+    return 'rgb(0, 0, 0)';
+  }
+}
+
+const outputDiv = document.getElementById('output');
+
+try {
+  const addResult = addNumbers(a, b);
+  const subtractResult = subtractNumbers(a, b);
+  const multiplyResult = multiplyNumbers(a, b);
+  const divideResult = divideNumbers(a, b);
+
+  outputDiv.innerHTML += `<p style="color: ${getColor(addResult)}">Результат додавання: ${addResult}</p>`;
+  outputDiv.innerHTML += `<p style="color: ${getColor(subtractResult)}">Результат віднімання: ${subtractResult}</p>`;
+  outputDiv.innerHTML += `<p style="color: ${getColor(multiplyResult)}">Результат множення: ${multiplyResult}</p>`;
+  outputDiv.innerHTML += `<p style="color: ${getColor(divideResult)}">Результат ділення: ${divideResult}</p>`;
+} catch (error) {
+  outputDiv.innerHTML += `<p style="color: red">${error.message}</p>`;
+}
 
 const numbers = [3, 8, 248, -10, -5, 209, 4];
 
@@ -82,5 +106,5 @@ function findMax(arr) {
 const minValue = findMin(numbers);
 const maxValue = findMax(numbers);
 
-console.log("Мінімальне число: " + minValue);
-console.log("Максимальне число: " + maxValue);
+outputDiv.innerHTML += `<p style="color: ${getColor(minValue)}">Мінімальне число: ${minValue}</p>`;
+outputDiv.innerHTML += `<p style="color: ${getColor(maxValue)}">Максимальне число: ${maxValue}</p>`;
