@@ -1,86 +1,123 @@
-let a = 3;
-let b = 0;
+// //23
+// let num = ["jsihgs", "aggva", 36, "rokhe", 55, 76, 27, 88, 109, "qiohgiuqahv"]
 
-function isNumeric(value) {
-  return typeof value === 'number' && !isNaN(value);
-}
+// function findSum(num){
+//   let sum = 0;
+//   for (let i = 0; i < num.length; i++) {
+//     if (typeof num[i] === 'number') {
+//       sum += num[i];
+//     }
+//   }
+//   return sum;
+// }
+  
 
-function addNumbers(a, b) {
-  if (isNumeric(a) && isNumeric(b)) {
-    return a + b;
-  } else {
-    throw new Error ('Обидва аргументи повинні бути числами.');
-  }
-}
+// function findMinMax(num) {
+//   let numbersOnly = num.filter(
+//     function (item) {
+//     return typeof item === 'number';
+//   });
 
-function subtractNumbers(a, b) {
-  if (isNumeric(a) && isNumeric(b)) {
-    return a - b;
-  } else {
-    throw new Error ('Обидва аргументи повинні бути числами.');
-  }
-}
+//   let min = Math.min(...numbersOnly);
+//   let max = Math.max(...numbersOnly);
+//   return { min: min, max: max };
+// }
+// var sumOfnum = findSum(num);
+// var resultMinMax = findMinMax(num);
+// console.log("Сума елементів масиву:", sumOfnum);
+// console.log("Мінімальне числове значення:", resultMinMax.min);
+// console.log("Максимальне числове значення:", resultMinMax.max);
 
-function multiplyNumbers(a, b) {
-  if (isNumeric(a) && isNumeric(b)) {
-    return a * b;
-  } else {
-    throw new Error ('Обидва аргументи повинні бути числами.');
-  }
-}
+// let lines = 5
+// let f = '';
 
-function divideNumbers(a, b) {
-  if (isNumeric(a) && isNumeric(b)) {
-    if (b !== 0) {
-      return a / b;
-    } else {
-      return('Ділення на нуль неможливе.');
-    }
-  } else {
-    throw new Error ('Обидва аргументи повинні бути числами.');
-  }
-}
-console.log(addNumbers(a, b));     
-console.log(subtractNumbers(a, b));
-console.log(multiplyNumbers(a, b));
-console.log(divideNumbers(a, b)); 
+// for (let i = 1; i <= lines; i++) {
+//   for (let j = 1; j <= i; j++) {
+//     f += '#';
+//   }
+//   f += '\n';
+// }
 
-const numbers = [3, 8, 248, -10, -5, 209, 4];
+// alert(f);
 
-function findMin(arr) {
-  if (arr.length === 0) {
-    return undefined;
-  }
 
-  let min = arr[0];
+//26
+// class Accumulator {
+//     constructor(initialValue) {
+//       this.value = initialValue;
+//     }
+  
+//     increment() {
+//       this.value++;
+//     }
+  
+//     decrement() {
+//       this.value--;
+//     }
+//   }
+  
+//   class CancelableAccumulator extends Accumulator {
+//       constructor(initialValue) {
+//         super(initialValue);
+//         this.initialValue = initialValue;
+//       }
+    
+//       clear() {
+//         this.value = this.initialValue;
+//       }
+//     }
+  
+//   const accumulator = new Accumulator(5);
+//   console.log(accumulator.value);
+  
+//   accumulator.increment();
+//   console.log(accumulator.value);
+  
+//   accumulator.decrement();
+//   console.log(accumulator.value);
+  
+//   const cancelableAccumulator = new CancelableAccumulator(10);
+//   console.log(cancelableAccumulator.value);
+  
+//   cancelableAccumulator.increment();
+//   console.log(cancelableAccumulator.value);
+  
+//   cancelableAccumulator.clear();
+//   console.log(cancelableAccumulator.value);
 
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] < min) {
-      min = arr[i];
-    }
-  }
 
-  return min;
-}
+//28
+const photos = document.querySelectorAll('.photo');
 
-function findMax(arr) {
-  if (arr.length === 0) {
-    return undefined;
-  }
+const initialScale = 1.0;
+const targetScale = 1.5;
+const animationSpeed = 0.05;
 
-  let max = arr[0];
+photos.forEach((photo) => {
+  let isZoomed = false;
+  let currentScale = initialScale;
+  let intervalId;
 
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] > max) {
-      max = arr[i];
-    }
-  }
+  photo.addEventListener('click', () => {
+    clearInterval(intervalId);
 
-  return max;
-}
-
-const minValue = findMin(numbers);
-const maxValue = findMax(numbers);
-
-console.log("Мінімальне число: " + minValue);
-console.log("Максимальне число: " + maxValue);
+    intervalId = setInterval(() => {
+      if (isZoomed) {
+        currentScale = currentScale - animationSpeed;
+        if (currentScale <= initialScale) {
+          currentScale = initialScale;
+          isZoomed = false;
+          clearInterval(intervalId);
+        }
+      } else {
+        currentScale = currentScale + animationSpeed;
+        if (currentScale >= targetScale) {
+          currentScale = targetScale;
+          isZoomed = true;
+          clearInterval(intervalId);
+        }
+      }
+      photo.style.transform = `scale(${currentScale})`;
+    }, 18);
+  });
+});
