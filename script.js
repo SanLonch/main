@@ -1,86 +1,76 @@
-let a = 3;
-let b = 0;
+class Vehicle {
+  constructor(height, width, weight, color) {
+    this.height = height;
+    this.width = width;
+    this.weight = weight;
+    this.color = color;
+  }
 
-function isNumeric(value) {
-  return typeof value === 'number' && !isNaN(value);
-}
+  getHeight() {
+    return this.height;
+  }
 
-function addNumbers(a, b) {
-  if (isNumeric(a) && isNumeric(b)) {
-    return a + b;
-  } else {
-    throw new Error ('Обидва аргументи повинні бути числами.');
+  getWidth() {
+    return this.width;
+  }
+
+  getWeight() {
+    return this.weight;
+  }
+
+  getColor() {
+    return this.color;
   }
 }
 
-function subtractNumbers(a, b) {
-  if (isNumeric(a) && isNumeric(b)) {
-    return a - b;
-  } else {
-    throw new Error ('Обидва аргументи повинні бути числами.');
+class Car extends Vehicle {
+  constructor(height, width, weight, color, numberOfDoors, maxPassengers) {
+    super(height, width, weight, color);
+    this.numberOfCarDoors = numberOfDoors;
+    this.maxPassengers = maxPassengers;
+  }
+
+  numberOfDoors() {
+    return this.numberOfCarDoors;
+  }
+
+  getMaxPassengers() {
+    return this.maxPassengers;
   }
 }
 
-function multiplyNumbers(a, b) {
-  if (isNumeric(a) && isNumeric(b)) {
-    return a * b;
-  } else {
-    throw new Error ('Обидва аргументи повинні бути числами.');
+class Bike extends Vehicle {
+  constructor(height, width, weight, color, numberOfWheels) {
+    super(height, width, weight, color);
+    this.numberOfWheels = numberOfWheels;
+  }
+
+  getNumberOfWheels() {
+    return this.numberOfWheels;
   }
 }
 
-function divideNumbers(a, b) {
-  if (isNumeric(a) && isNumeric(b)) {
-    if (b !== 0) {
-      return a / b;
-    } else {
-      return('Ділення на нуль неможливе.');
-    }
-  } else {
-    throw new Error ('Обидва аргументи повинні бути числами.');
-  }
-}
-console.log(addNumbers(a, b));     
-console.log(subtractNumbers(a, b));
-console.log(multiplyNumbers(a, b));
-console.log(divideNumbers(a, b)); 
+const vehicle = new Vehicle(150, 200, 1000, 'red');
+const car = new Car(140, 190, 1200, 'blue', 4, 5);
+const bike = new Bike(100, 60, 15, 'green', 2);
 
-const numbers = [3, 8, 248, -10, -5, 209, 4];
+console.log('Vehicle:');
+console.log('Height:', vehicle.getHeight());
+console.log('Width:', vehicle.getWidth());
+console.log('Weight:', vehicle.getWeight());
+console.log('Color:', vehicle.getColor());
 
-function findMin(arr) {
-  if (arr.length === 0) {
-    return undefined;
-  }
+console.log('\nCar:');
+console.log('Height:', car.getHeight());
+console.log('Width:', car.getWidth());
+console.log('Weight:', car.getWeight());
+console.log('Color:', car.getColor());
+console.log('Number of Car Doors:', car.numberOfDoors());
+console.log('Max Passengers:', car.getMaxPassengers());
 
-  let min = arr[0];
-
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] < min) {
-      min = arr[i];
-    }
-  }
-
-  return min;
-}
-
-function findMax(arr) {
-  if (arr.length === 0) {
-    return undefined;
-  }
-
-  let max = arr[0];
-
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] > max) {
-      max = arr[i];
-    }
-  }
-
-  return max;
-}
-
-const minValue = findMin(numbers);
-const maxValue = findMax(numbers);
-
-console.log("Мінімальне число: " + minValue);
-console.log("Максимальне число: " + maxValue);
+console.log('\nBike:');
+console.log('Height:', bike.getHeight());
+console.log('Width:', bike.getWidth());
+console.log('Weight:', bike.getWeight());
+console.log('Color:', bike.getColor());
+console.log('Number of Wheels:', bike.getNumberOfWheels());
