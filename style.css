@@ -1,0 +1,41 @@
+body {
+    padding: 0 40px;
+}
+
+h1 {
+  text-align: center;
+}
+
+main img {
+  width: 500px;
+}
+
+form {
+    width: 800px;
+    display: block;
+    margin-top: 30px;
+}
+
+form .star span {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.checked {
+    color: orange;
+}
+
+form label {
+    display: block;
+    font-size: 1.2rem;
+}
+
+.reviews-list {
+    margin-top: 20px;
+}
+
+.review {
+    border: 1px solid #333;
+    margin: 20px 0;
+    padding: 10px;
+}
