@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+input, select, button {
+    margin: 10px;
+    padding: 8px;
+ } 
+
+.cocktail-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+}
+
+.cocktail-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+} 
