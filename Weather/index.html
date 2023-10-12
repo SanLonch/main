@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Погода</title>
     <link rel="stylesheet" href="weather.css">
-    <title>Додаток погоди</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Додаток погоди</h1>
-        <input type="text" id="cityInput" placeholder="Введіть місто">
-        <button onclick="getWeather()">Отримати погоду</button>
-        <div id="weatherInfo"></div>
-    </div>
+    <h1>Погода у вибраному місті</h1>
+    <label for="city">Місто:</label>
+    <input type="text" id="city">
+    <label for="date">Дата:</label>
+    <input type="date" id="date">
+    <button onclick="getWeather()">Отримати погоду</button>
+    <div id="weather-info"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="weather.js"></script>
 </body>
 </html>
