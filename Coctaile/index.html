@@ -2,24 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktail App</title>
     <link rel="stylesheet" href="coctaile.css">
-    <title>Додаток для коктелів</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Пошук коктелів</h1>
-        <input type="text" id="cocktailName" placeholder="Введіть назву коктелю">
-        <input type="text" id="ingredient" placeholder="Введіть інгредієнт">
-        <select id="alcoholic">
-            <option value="">Всі</option>
-            <option value="Alcoholic">Алкогольні</option>
-            <option value="Non_Alcoholic">Безалкогольні</option>
-        </select>
-        <button onclick="searchCocktails()">Пошук</button>
-        <div id="cocktailList"></div>
-    </div>
-    <div class="cocktail-list" id="cocktailList"></div>
+    <h1>Cocktail App</h1>
+    <input type="text" id="cocktailName" placeholder="Enter cocktail name">
+    <input type="text" id="ingredient" placeholder="Enter ingredient">
+    <select id="alcoholic">
+        <option value="Alcoholic">Alcoholic</option>
+        <option value="Non_Alcoholic">Non Alcoholic</option>
+    </select>
+    <button onclick="searchCocktailByName()">Search coctaile</button>
+    <div id="cocktailResult"></div>
+
     <script src="coctaile.js"></script>
 </body>
 </html>
