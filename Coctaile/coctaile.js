@@ -1,41 +1,24 @@
-async function searchCocktails() {
-    const cocktailName = document.getElementById('cocktailName').value;
-    const ingredient = document.getElementById('ingredient').value;
-    const alcoholic = document.getElementById('alcoholic').value;
-
-    const url = 'https://the-cocktail-db3.p.rapidapi.com/45';
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': '07404d2156mshe8b5f54307dc7e3p1ffbc6jsnff84701765e8',
-            'X-RapidAPI-Host': 'the-cocktail-db3.p.rapidapi.com'
-        }
-    };
-
-    try {
-        const response = await fetch(url, options);
-        const result = await response.text();
-        console.log(result);
-    } catch (error) {
-        console.error(error);
-    }
+function searchCocktailByName() {
+    var cocktailName = document.getElementById('cocktailName').value;
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`)
+        .then(response => response.json())
+        .then(data => displayCocktails(data.drinks))
+        .catch(error => console.log(error));
 }
 
 function displayCocktails(cocktails) {
-    const cocktailList = document.getElementById('cocktailList');
-    cocktailList.innerHTML = '';
+    var cocktailResult = document.getElementById('cocktailResult');
+    cocktailResult.innerHTML = '';
 
-    if (cocktails) {
-        cocktails.forEach(cocktail => {
-            const cocktailItem = document.createElement('div');
-            cocktailItem.className = 'cocktail-item';
-            cocktailItem.innerHTML = `
-                <h2>${cocktail.strDrink}</h2>
-                <img src="${cocktail.strDrinkThumb}" alt="${cocktail.strDrink}">
-            `;
-            cocktailList.appendChild(cocktailItem);
-        });
+    if (cocktails === null) {
+        cocktailResult.innerHTML = 'No cocktails found.';
     } else {
-        cocktailList.innerHTML = 'Коктелі не знайдені.';
+        cocktails.forEach(cocktail => {
+            var cocktailDiv = document.createElement('div');
+            cocktailDiv.innerHTML = `<h2>${cocktail.strDrink}</h2>
+                                     <img src="${cocktail.strDrinkThumb}" alt="${cocktail.strDrink}">
+                                     <p>${cocktail.strInstructions}</p>`;
+            cocktailResult.appendChild(cocktailDiv);
+        });
     }
 }
