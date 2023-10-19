@@ -1,0 +1,170 @@
+body {
+    width: 1920px;
+}
+header{
+    height: 973px;
+    width: 1920px;
+    background-image: url(./assets/Rectangle.jpg);
+
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+
+.container{
+    display: flex;
+    padding-top: 99px;
+
+}
+
+.container :nth-child(1){
+    width: 96px;
+    height: 102px;
+    padding-right: 20px ;
+}
+
+
+.container :nth-child(2){
+    width: 352px;
+    height: 95px;
+}
+
+
+.container-first img{
+    width: 358px;
+    height: 136px;
+    margin-top: 157px;
+}
+
+.container-first p {
+    width: 361px;
+    height: 80px;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 30px 0;
+}
+
+
+.container-second{
+    display: flex;
+}
+
+.container-second button{
+    padding: 15px 52px 15px 51px;
+    font-size: 14px;
+    line-height: 20px;
+    background: var(--yellow, #F2C94C);
+    color: var(--gray-1, #333);
+    border: 0px;
+    border-radius: 40px;
+}
+
+.container-second p{
+    color: var(--red, #EB5757);
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 10px ;
+    margin-left: 30px;
+}
+
+.services{
+    margin-top: 50px;
+    margin-left: 352px;
+    margin-bottom: 50px;
+    width: 791px;
+    height: 134px;
+}
+.about-us {
+    margin-left: 352px;
+    margin-bottom: 50px;
+    width: 791px;
+    height: 134px;
+}
+
+.grey-background1 {
+    background-image: url(assets/Rectangle1.jpg);
+    display: flex;
+    width: 1903px;
+    height: 920px;
+}
+
+.first {
+    margin-left: 19%;
+}
+
+.replacing-sockets div{
+    border-radius: 30px;
+    background: #FFF;
+    margin: 40px;
+    
+}
+
+.replacing-sockets img{
+    width: 322px;
+    height: 228px;
+}
+
+h5 {
+    text-align: center;
+    margin-top: 10px;
+}
+.rozet a {
+    width: 182px;
+    height: 56px;
+    border-radius: 18px;
+    background: linear-gradient(90deg, #EB7598 0%, #FF926F 100%);
+    box-shadow: 0px 10px 25px 0px rgba(251, 112, 112, 0.45);
+    padding: 16px 69px;
+    font-size: 14px;
+    line-height: 24px;
+    margin: 0 71px;
+}
+
+.grey-background2 {
+    width: 1903px;
+    height: 727px;
+    background-image: url(assets/Rectangle2.jpg);
+}
+
+.lorem div {
+    display: inline-block;
+    width: 330px;
+    height: 100px;
+    flex-direction: column;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 74px 50px 0;
+}
+
+.ellipse {
+    border: 1px solid #D89595;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    color: #D89595;
+}
+
+.gallery {
+    width: 1903px;
+    margin-left: 15%;
+}
+
+.gallery img {
+    display: inline-block;
+    margin: 23px 23px;
+}
+
+.contact-us {
+    margin: 0 auto;
+    width: 1200px;
+    height: 648px;
+    background-image: url(assets/Rectangle-8.jpg);
+}
+
+.contact-us p {
+    color: #FFF;
+    text-align: center;
+    font-size: 96px;
+    line-height: 100.5%;
+}
